@@ -23,10 +23,7 @@ listing_status <- read_csv("./Data/0_QAQC/endangered_status.csv")
 
 # write your code here
 zoo_animals_processed <- zoo_animals_raw %>% 
-  left_join(weight_parameters, by = "species") %>% # join the weight df to the raw data
-  mutate(is_underweight = case_when(weight < min_weight ~ TRUE, # if the weight is less than the min weight, write "TRUE"
-                                    TRUE ~ FALSE)) %>% # otherwise write "FALSE"
-  select(colnames(zoo_animals_raw), is_underweight) # select only the original columns plus the new is_underweight col
+
 
 
 # run this code to check your answer
@@ -41,10 +38,7 @@ test_that("Data frames are equal", {
 
 # write your code here
 zoo_animals_processed <- zoo_animals_processed %>% 
-  left_join(weight_parameters, by = "species") %>% 
-  mutate(is_overweight = case_when(weight > max_weight ~ TRUE, 
-                                   TRUE ~ FALSE)) %>% 
-  select(colnames(zoo_animals_processed), is_overweight)
+
 
 
 # run this code to check your answer
